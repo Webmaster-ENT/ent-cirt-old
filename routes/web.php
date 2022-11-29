@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/dshbrd', function () {
+    return view('layouts.dashbord.index');
+});
+
+Route::get('/all-article', function () {
+    return view('layouts.dashbord.all-article');
+});
+
+Route::get('/create-article', function () {
+    return view('layouts.dashbord.create-article');
+});
+
+Route::get('/all-pengaduan', function () {
+    return view('layouts.dashbord.all-pengaduan');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,4 +37,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
