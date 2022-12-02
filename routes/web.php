@@ -29,6 +29,10 @@ Route::get('/all-pengaduan', function () {
     return view('layouts.dashbord.all-pengaduan');
 });
 
+Route::get('/signin', function () {
+    return view('layouts.dashbord.signin');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
