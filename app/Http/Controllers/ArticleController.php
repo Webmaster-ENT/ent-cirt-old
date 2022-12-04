@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+// use Dotenv\Util\Str;
+use Illuminate\Support\Str;
 use App\Models\Article;
-
 use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -18,6 +20,8 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::with('user')->get();
+        $user = Auth::user();
+        $id = Auth::id();
         return view('backend.article.index', compact('articles'));
     }
 
@@ -41,15 +45,25 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'slug' => 'required',
-            'user_id' => 'required',
             'ispublished' => 'required',
             'summary' => 'required',
             'body' => 'required',
             'thumbnail_url' => 'required',
         ]);
 
-        Article::create($request->all());
+        $imageName = time() . '.' . $request->thumbnail_url->extension();
+
+        $request->thumbnail_url->move(public_path('images'), $imageName);
+
+        Article::create([
+            'title' => $request->title,
+            'slug' => Str::slug(Str::words($request->title, 15)),
+            'user_id' => Auth::id(),
+            'ispublished' => $request->ispublished,
+            'summary' => $request->summary,
+            'body' => $request->body,
+            'thumbnail_url' => $request->thumbnail_url,
+        ]);
         return redirect()->route('article.index');
     }
 
@@ -86,15 +100,20 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'slug' => 'required',
-            'user_id' => 'required',
             'ispublished' => 'required',
             'summary' => 'required',
             'body' => 'required',
-            'thumbnail_url' => 'required',
         ]);
 
-        $article->update($request->all());
+        $article->update([
+            'title' => $request->title,
+            'slug' => Str::slug(Str::words($request->title, 15)),
+            'user_id' => Auth::id(),
+            'ispublished' => $request->ispublished,
+            'summary' => $request->summary,
+            'body' => $request->body,
+            'thumbnail_url' => $request->thumbnail_url,
+        ]);
         return redirect()->route('article.index');
     }
 

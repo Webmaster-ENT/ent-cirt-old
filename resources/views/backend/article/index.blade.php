@@ -39,7 +39,7 @@
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <div class="flex px-2 py-1">
                                                     <div>
-                                                        <img src=""
+                                                        <img src="{{ $article->thumbnail_url }}"
                                                             class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
                                                             alt="user1" />
                                                     </div>
@@ -67,14 +67,17 @@
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <a href="{{ route('article.edit', $article) }}"
-                                                    class="font-semibold leading-tight text-xs text-slate-400"> Edit
-                                                </a>
-                                                <form action="{{ route('article.destroy', $article) }}" method="post">
+                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                                    action="{{ route('article.destroy', $article) }}" method="POST">
+
                                                     @csrf
-                                                    @method('delete')
+                                                    @method('DELETE')
+                                                    <a href="{{ route('article.edit', $article) }}"
+                                                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit</a>
+
                                                     <button type="submit"
-                                                        class="font-semibold leading-tight text-xs text-slate-400">Hapus</button>
+                                                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-10 bg-x-25 bg-gradient-to-tl from-red-700 to-red-800 hover:border-red-700 hover:bg-red-700 hover:text-white">Delete
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -18,10 +18,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->string('slug');
-            $table->boolean('ispublished');
+            $table->text('ispublished');
             $table->text('summary');
             $table->text('body');
-            $table->text('thumbnail_url');
+            $table->text('thumbnail_url')->nullable(true);
             $table->timestamps();
         });
     }
