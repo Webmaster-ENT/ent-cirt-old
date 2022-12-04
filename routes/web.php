@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,29 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dshbrd', function () {
-    return view('layouts.dashbord.index');
-});
-
-Route::get('/all-article', function () {
-    return view('layouts.dashbord.all-article');
-});
-
-Route::get('/create-article', function () {
-    return view('layouts.dashbord.create-article');
-});
-
-Route::get('/all-pengaduan', function () {
-    return view('layouts.dashbord.all-pengaduan');
-});
-
-Route::get('/signin', function () {
-    return view('layouts.dashbord.signin');
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('article', ArticleController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            // $table->foreign('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->string('slug');
             $table->boolean('ispublished');

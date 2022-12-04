@@ -12,24 +12,29 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @include('partials.header')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            {{--  @include('layouts.navigation')  --}}
+            @include('partials.sidebar')
 
             <!-- Page Heading -->
-            @if (isset($header))
+            {{--  @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
-            @endif
+            @endif  --}}
 
             <!-- Page Content -->
-            <main>
+            <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+                @include('partials.navbar')
                 {{ $slot }}
             </main>
         </div>
+        @include('partials.footer-link')
     </body>
 </html>
