@@ -39,9 +39,15 @@
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <div class="flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ $article->thumbnail_url }}"
-                                                            class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out text-sm h-9 w-9 rounded-xl"
-                                                            alt="user1" />
+                                                        @if ($article->thumbnail_url != '')
+                                                            <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}"
+                                                                class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out w-40 rounded-lg"
+                                                                alt="{{ $article->thumbnail_url }}" />
+                                                        @else
+                                                            <img src="{{ asset('images/default_image.png') }}"
+                                                                class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out w-40 rounded-lg"
+                                                                alt="{{ $article->thumbnail_url }}" />
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>

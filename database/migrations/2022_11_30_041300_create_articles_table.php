@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('ispublished');
             $table->text('summary');
             $table->text('body');
-            $table->text('thumbnail_url')->nullable(true);
+            $table->text('thumbnail_url')->nullable();
             $table->timestamps();
         });
     }

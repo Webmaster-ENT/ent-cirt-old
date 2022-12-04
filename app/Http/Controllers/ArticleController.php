@@ -9,6 +9,7 @@ use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
 {
@@ -48,12 +49,15 @@ class ArticleController extends Controller
             'ispublished' => 'required',
             'summary' => 'required',
             'body' => 'required',
-            'thumbnail_url' => 'required',
         ]);
 
-        $imageName = time() . '.' . $request->thumbnail_url->extension();
+        $newName = '';
 
-        $request->thumbnail_url->move(public_path('images'), $imageName);
+        if ($request->file('thumbnail_url')) {
+            $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
+            $request->file('thumbnail_url')->storeAs('images', $newName);
+        }
 
         Article::create([
             'title' => $request->title,
@@ -62,7 +66,7 @@ class ArticleController extends Controller
             'ispublished' => $request->ispublished,
             'summary' => $request->summary,
             'body' => $request->body,
-            'thumbnail_url' => $request->thumbnail_url,
+            'thumbnail_url' => $request['thumbnail_url'] = $newName
         ]);
         return redirect()->route('article.index');
     }
@@ -105,6 +109,18 @@ class ArticleController extends Controller
             'body' => 'required',
         ]);
 
+        $newName = '';
+
+        if ($request->hasFile('thumbnail_url')) {
+
+            $destination = app_path("storage/images/{$article->thumbnail_url}");
+            if (File::exists($destination)) {
+                unlink($destination);
+            }
+            $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
+            $request->file('thumbnail_url')->storeAs('images', $newName);
+        }
         $article->update([
             'title' => $request->title,
             'slug' => Str::slug(Str::words($request->title, 15)),
@@ -112,8 +128,9 @@ class ArticleController extends Controller
             'ispublished' => $request->ispublished,
             'summary' => $request->summary,
             'body' => $request->body,
-            'thumbnail_url' => $request->thumbnail_url,
+            'thumbnail_url' => $request['thumbnail_url'] = $newName
         ]);
+
         return redirect()->route('article.index');
     }
 
@@ -125,6 +142,9 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        $destination = 'storage/images/' . $article->thumbnail_url;
+        unlink($destination);
+
         $article->delete();
         return redirect()->route('article.index');
     }
