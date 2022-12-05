@@ -8,5 +8,5 @@
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <!-- Main Styling -->
 <link href="{{ asset('tailwind/assets/css/soft-ui-dashboard-tailwind.css') }}" rel="stylesheet" />
-{{--  CKEDITOR  --}}
+<!-- CKEDITOR -->
 <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>

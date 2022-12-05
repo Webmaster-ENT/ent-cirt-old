@@ -13,8 +13,12 @@
                         article
                     @elseif(Request::is('article/create'))
                         create article
+                    @elseif(Request::is('dashboard'))
+                        dashboard
                     @elseif(Request::is('report'))
                         report
+                    @else
+                        edit article
                     @endif
                 </li>
             </ol>
@@ -23,8 +27,12 @@
                     article
                 @elseif(Request::is('article/create'))
                     create article
+                @elseif(Request::is('dashboard'))
+                    dashboard
                 @elseif(Request::is('report'))
                     report
+                @else
+                    edit article
                 @endif
             </h6>
         </nav>
