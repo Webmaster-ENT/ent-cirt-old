@@ -15,6 +15,9 @@
 
     <div class="items-center block w-auto max-h-screen h-sidenav grow basis-full">
         <ul class="flex flex-col pl-0 mb-0">
+            <li class="w-full mt-4">
+                <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Article</h6>
+            </li>
             <li class="mt-0.5 w-full">
                 <a class="{{ Request::is('article') ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : 'py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors' }}"
                     href="{{ route('article.index') }}">
@@ -72,12 +75,12 @@
             </li>
 
             <li class="w-full mt-4">
-                <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Pengaduan</h6>
+                <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Report</h6>
             </li>
 
             <li class="mt-0.5 w-full">
-                <a class="{{ Request::is('allreport') ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : 'py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors' }}"
-                    href="/allreport">
+                <a class="{{ Request::is('report') ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : 'py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors' }}"
+                    href="/report">
                     <div
                         class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -99,7 +102,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">All Pengaduan</span>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Reports</span>
                 </a>
             </li>
 
@@ -140,6 +143,8 @@
                     @csrf
                 </form>
             </li>
+        </ul>
+    </div>
 </aside>
 
 <!-- end sidenav -->
