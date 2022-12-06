@@ -27,6 +27,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/report', ReportController::class);
     Route::resource('/article', ArticleController::class);
+    Route::get('/report-done', [ReportController::class, 'isDone']);
 });
 
 
