@@ -18,7 +18,7 @@ class Article extends Model
         'title',
         'slug',
         'user_id',
-        'ispublished',
+        'status',
         'summary',
         'body',
         'thumbnail_url'

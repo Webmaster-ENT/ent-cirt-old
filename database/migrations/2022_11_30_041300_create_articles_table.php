@@ -18,13 +18,14 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('title');
             $table->string('slug');
-            $table->text('ispublished');
+            $table->enum('status', ['draft', 'publish']);
             $table->text('summary');
             $table->text('body');
             $table->text('thumbnail_url')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

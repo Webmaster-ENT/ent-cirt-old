@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 // use Dotenv\Util\Str;
-use Illuminate\Support\Str;
 use App\Models\Article;
+use Illuminate\Support\Str;
 use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -46,8 +47,7 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'ispublished' => 'required',
-            'summary' => 'required',
+            // 'status' => 'required',
             'body' => 'required',
             'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
         ]);
@@ -64,13 +64,14 @@ class ArticleController extends Controller
             'title' => $request->title,
             'slug' => Str::slug(Str::words($request->title, 15)),
             'user_id' => Auth::id(),
-            'ispublished' => $request->ispublished,
-            'summary' => $request->summary,
+            'status' => $request->status,
+            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
             'body' => $request->body,
             'thumbnail_url' => $request['thumbnail_url'] = $newName
         ]);
         return redirect()->route('article.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -105,8 +106,7 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'ispublished' => 'required',
-            'summary' => 'required',
+            'status' => 'required',
             'body' => 'required',
             'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
         ]);
@@ -117,8 +117,8 @@ class ArticleController extends Controller
             'title' => $request->title,
             'slug' => Str::slug(Str::words($request->title, 15)),
             'user_id' => Auth::id(),
-            'ispublished' => $request->ispublished,
-            'summary' => $request->summary,
+            'status' => $request->status,
+            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
             'body' => $request->body,
         ];
 
@@ -147,9 +147,10 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        $destination = 'storage/images/' . $article->thumbnail_url;
-        unlink($destination);
+        if ($article->thumbnail_url) {
 
+            Storage::delete($article->thumbnail_url);
+        }
         $article->delete();
         return redirect()->route('article.index');
     }
