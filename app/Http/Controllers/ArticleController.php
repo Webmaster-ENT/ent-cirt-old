@@ -49,6 +49,7 @@ class ArticleController extends Controller
             'ispublished' => 'required',
             'summary' => 'required',
             'body' => 'required',
+            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
         ]);
 
         $newName = '';
@@ -107,11 +108,21 @@ class ArticleController extends Controller
             'ispublished' => 'required',
             'summary' => 'required',
             'body' => 'required',
+            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
         ]);
 
         $newName = '';
 
-        if ($request->hasFile('thumbnail_url')) {
+        $values = [
+            'title' => $request->title,
+            'slug' => Str::slug(Str::words($request->title, 15)),
+            'user_id' => Auth::id(),
+            'ispublished' => $request->ispublished,
+            'summary' => $request->summary,
+            'body' => $request->body,
+        ];
+
+        if ($request->file('thumbnail_url') != null) {
 
             $destination = app_path("storage/images/{$article->thumbnail_url}");
             if (File::exists($destination)) {
@@ -120,16 +131,10 @@ class ArticleController extends Controller
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
             $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
             $request->file('thumbnail_url')->storeAs('images', $newName);
+
+            $values['thumbnail_url'] = $newName;
         }
-        $article->update([
-            'title' => $request->title,
-            'slug' => Str::slug(Str::words($request->title, 15)),
-            'user_id' => Auth::id(),
-            'ispublished' => $request->ispublished,
-            'summary' => $request->summary,
-            'body' => $request->body,
-            'thumbnail_url' => $request['thumbnail_url'] = $newName
-        ]);
+        $article->update($values);
 
         return redirect()->route('article.index');
     }
