@@ -48,26 +48,19 @@
                 <li class="flex items-center">
                     <div class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-slate-500">
                         <i class="fa fa-user sm:mr-1"></i>
-                        <span class="hidden sm:inline">{{ Auth::user()->name }}</span>
+                        <span class="hidden sm:inline capitalize">{{ Auth::user()->name }}</span>
                     </div>
                 </li>
-                <li class="flex items-center pl-4 xl:hidden">
-                    <a href="javascript:;" class="block p-0 transition-all ease-nav-brand text-sm text-slate-500"
-                        sidenav-trigger>
-                        <div class="w-4.5 overflow-hidden">
-                            <i
-                                class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i
-                                class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                            <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
-                        </div>
-                    </a>
-                </li>
                 <li class="flex items-center px-4">
-                    <a href="javascript:;" class="p-0 transition-all text-sm ease-nav-brand text-slate-500">
-                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-cog"></i>
-                        <!-- fixed-plugin-button-nav  -->
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        class="block px-0 py-2 font-semibold transition-all ease-nav-brand text-sm text-rose-900">
+                        <i fixed-plugin-button-nav class="cursor-pointer fa fa-sign-out"></i>
+                        <span class="hidden sm:inline capitalize">Sign Out</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>
