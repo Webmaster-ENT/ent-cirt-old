@@ -19,12 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('article', ArticleController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('/report', ReportController::class);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('/report', ReportController::class);
+    Route::resource('/article', ArticleController::class);
+});
+
 
 require __DIR__ . '/auth.php';
