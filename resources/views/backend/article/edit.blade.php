@@ -17,7 +17,7 @@
                         <label for="summary" class="block text-sm font-medium text-gray-700">Summary</label>
                         <textarea type="text" name="summary" id="summary"
                             class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                            rows="5" placeholder="Summary">{{ $article->summary }}</textarea>
+                            rows="5" maxlength="150" placeholder="Summary">{{ $article->summary }}</textarea>
                     </div>
 
                     <div class="row-span-2">
@@ -29,8 +29,7 @@
 
                     <div>
                         <label for="thumbnail_url" class="block text-sm font-medium text-gray-700">Thumbnail</label>
-                        <input type="file" name="thumbnail_url" id="thumbnail_url"
-                            value="{{ $article->thumbnail_url }}">
+                        <input type="file" name="thumbnail_url" id="thumbnail_url">
                     </div>
                     <div class="col-span-3">
                         <textarea name="body" id="editor" placeholder="Isi Artikel">{{ $article->body }}</textarea>

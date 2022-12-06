@@ -15,7 +15,7 @@
                         <label for="summary" class="block text-sm font-medium text-gray-700">Summary</label>
                         <textarea type="text" name="summary" id="summary"
                             class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                            rows="5" placeholder="Summary"></textarea>
+                            rows="5" maxlength="25" placeholder="Summary"></textarea>
                     </div>
 
                     <div class="row-span-2">
