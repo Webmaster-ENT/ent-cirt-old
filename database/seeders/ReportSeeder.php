@@ -19,5 +19,10 @@ class ReportSeeder extends Seeder
             'subject' => 'report one',
             'body' => 'wifi error mas, masa iya engga dibenerin'
         ]);
+        Report::create([
+            'subject' => 'report two',
+            'body' => 'wifi sudah bisa mas, tapi lambat',
+            'is_done' => true
+        ]);
     }
 }

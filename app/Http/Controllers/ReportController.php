@@ -10,8 +10,6 @@ class ReportController extends Controller
 {
     //
     public function index() {
-        //$reports = Report::all();
-        //$reports = DB::table('reports')->where('is_done', '=', '0')->get();
         $reports = Report::all()->where('is_done', '=', '0');
         return view('backend.report.index', compact('reports'));
     }
