@@ -29,8 +29,8 @@ Route::get('/all-pengaduan', function () {
     return view('layouts.dashbord.all-pengaduan');
 });
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/article', function () {
+    return view('article');
 });
 
 Route::get('/dashboard', function () {
