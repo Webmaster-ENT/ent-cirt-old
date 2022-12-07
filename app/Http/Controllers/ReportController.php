@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
     //
     public function index() {
-        //$reports = Report::all();
-        //$reports = DB::table('reports')->where('is_done', '=', '0')->get();
         $reports = Report::all()->where('is_done', '=', '0');
         return view('backend.report.index', compact('reports'));
     }
@@ -29,13 +26,4 @@ class ReportController extends Controller
             'body' => $request['body'],
         ]);
     }
-=======
-
-class ReportController extends Controller
-{
-    function index(){
-        $report = Report::all();
-    }
-
->>>>>>> main
 }
