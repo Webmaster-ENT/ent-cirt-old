@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
@@ -28,4 +29,13 @@ class ReportController extends Controller
             'body' => $request['body'],
         ]);
     }
+=======
+
+class ReportController extends Controller
+{
+    function index(){
+        $report = Report::all();
+    }
+
+>>>>>>> main
 }
