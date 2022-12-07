@@ -1,6 +1,13 @@
 <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start"
     navbar-main navbar-scroll="true">
     <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        @if (Request::is('article') || Request::is('report') || Request::is('dashboard') || Request::is('report-done'))
+        @else
+            <a href="{{ route('article.index') }}">
+                <button type="button" class="btn capitalize font-medium text-2xl mr-6 text-gray-300"><i
+                        class="fa fa-chevron-left"></i></button>
+            </a>
+        @endif
         <nav>
             <!-- breadcrumb -->
             <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
@@ -17,6 +24,8 @@
                         dashboard
                     @elseif(Request::is('report'))
                         report
+                    @elseif(Request::is('report-done'))
+                        report done
                     @else
                         edit article
                     @endif
@@ -31,6 +40,8 @@
                     dashboard
                 @elseif(Request::is('report'))
                     report
+                @elseif(Request::is('report-done'))
+                    report done
                 @else
                     edit article
                 @endif

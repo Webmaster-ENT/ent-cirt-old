@@ -25,8 +25,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('/report', ReportController::class);
     Route::resource('/article', ArticleController::class);
+    Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+    Route::resource('/report', ReportController::class);
     Route::get('/report-done', [ReportController::class, 'isDone']);
 });
 

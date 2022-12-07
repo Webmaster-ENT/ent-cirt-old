@@ -1,9 +1,5 @@
 <x-app-layout>
-    <div class="w-full px-6 py-6 mx-auto">
-        <a href="{{ route('article.index') }}">
-            <button type="button" class="btn capitalize font-medium text-gray-500 mb-4"><i class="fa fa-chevron-left"></i>
-                article</button>
-        </a>
+    <div class="w-full px-10 py-6 mx-auto">
         <form role="form text-left" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="bg-white px-4 py-5 sm:p-6">
