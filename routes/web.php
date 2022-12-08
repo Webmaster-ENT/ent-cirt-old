@@ -21,15 +21,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('/article', ArticleController::class);
-    Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
-    Route::resource('/report', ReportController::class);
-    Route::get('/report-done', [ReportController::class, 'isDone']);
+    Route::prefix('/admin')->group(function (){
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        });
+        Route::resource('/article', ArticleController::class);
+        Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+        Route::get('/report', [ReportController::class, 'index'])->name('report.index');
+        Route::get('/report/done', [ReportController::class, 'isDone'])->name('report.isDone');
+    });
 });
 
 
