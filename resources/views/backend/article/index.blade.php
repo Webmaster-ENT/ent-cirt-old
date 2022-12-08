@@ -80,20 +80,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function onChangeCarouselStatus(element) {
-            var elementId = element.id;
-            var isChecked = $("#" + elementId).prop('checked');
-            var carouselStatus = isChecked ? 1 : 0;
-
-            const elementIdStrArray = elementId.split("-");
-            var carouselId = elementIdStrArray[1];
-
-            $.get("carousel/isshow.php?carouselId=" + carouselId + "&carouselStatus=" + carouselStatus, function(data,
-                status) {
-                // alert(data + " " + status);
-            });
-
-        }
-    </script>
 </x-app-layout>

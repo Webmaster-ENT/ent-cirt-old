@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Article extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     public function user()
     {
