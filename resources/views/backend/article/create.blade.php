@@ -2,7 +2,7 @@
     <div class="w-full px-10 py-6 mx-auto">
         <form role="form text-left" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="bg-white px-4 py-5 sm:p-6">
+            <div class="bg-white px-4 py-5 sm:p-6 rounded-2xl">
                 <div class="grid grid-cols-4 gap-4">
                     <div class="col-span-3">
                         <label for="title" class="block text-sm font-medium text-gray-700">Title</label>

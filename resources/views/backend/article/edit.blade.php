@@ -4,7 +4,7 @@
             enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="bg-white px-4 py-5 sm:p-6">
+            <div class="bg-white px-4 py-5 sm:p-6 rounded-2xl">
                 <div class="grid grid-cols-4 gap-4">
                     <div class="col-span-3">
                         <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
