@@ -8,16 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     use HasFactory;
-
-
-
     protected $fillable = [
         'subject',
         'body',
         'contact',
         'image_url',
         'is_done',
-        'created_at',
-        'image_url'
+        'created_at'
     ];
 }
