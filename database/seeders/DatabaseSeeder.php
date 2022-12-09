@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             UserSeeder::class,
-            ReportSeeder::class
+            ReportSeeder::class,
+            ArticleSeeder::class
         ]);
     }
 }

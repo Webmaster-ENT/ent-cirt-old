@@ -19,6 +19,14 @@ class ReportController extends Controller
         return view('backend.report.done', compact('reports'));
     }
 
+    public function updateDone(Report $report){
+        $isDone = [
+            'isDone' => true
+        ];
+        $report->update($isDone);
+//        return $report->id;
+        return redirect()->route('report.index');
+    }
 
     public function create(Request $request) {
         $report = Report::create([

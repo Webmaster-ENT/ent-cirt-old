@@ -32,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
         Route::get('/report', [ReportController::class, 'index'])->name('report.index');
         Route::get('/report/done', [ReportController::class, 'isDone'])->name('report.isDone');
+        Route::put('/report/update', [ReportController::class, 'updateDone'])->name('report.update');
     });
 });
 

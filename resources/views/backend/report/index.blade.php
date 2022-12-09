@@ -66,19 +66,14 @@
                                             </td>
                                             <td
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                    action="{{ route('article.destroy', $article) }}" method="POST">
+                                                <form onsubmit="return confirm('Is it Done?');"
+                                                    action="{{ route('report.update', $report->id) }}" method="post">
                                                     @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('article.edit', $article) }}"
-                                                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit</a>
-
+                                                    @method('PUT')
                                                     <button type="submit"
-                                                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-10 bg-x-25 bg-gradient-to-tl from-red-700 to-red-800 hover:border-red-700 hover:bg-red-700 hover:text-white">Delete
+                                                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Update
                                                     </button>
                                                 </form>
-                                                
                                             </td>
                                         </tr>
                                     @endforeach
