@@ -31,7 +31,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|max:255',
             'status' => 'required',
             'body' => 'required',
             'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
@@ -57,9 +57,9 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('backend.article.show', compact('article'));
     }
 
     public function edit(Article $article)
@@ -84,7 +84,7 @@ class ArticleController extends Controller
             'slug' => Str::slug(Str::words($request->title, 15)),
             'user_id' => Auth::id(),
             'status' => $request->status,
-            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
+            'summary' => Str::of(Str::words($request->body, 23)),
             'body' => $request->body,
         ];
 
@@ -111,7 +111,8 @@ class ArticleController extends Controller
 
             Storage::delete($article->thumbnail_url);
         }
-        $article->delete();
+        Article::destroy($article->id);
+        // $article->delete();
         return redirect()->route('article.index');
     }
 

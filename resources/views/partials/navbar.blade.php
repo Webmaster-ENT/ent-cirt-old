@@ -29,6 +29,8 @@
                         report
                     @elseif(Request::is('admin/report/done'))
                         report done
+                    @elseif(Request::is('admin/article/{article:id}'))
+                        report done
                     @else
                         edit article
                     @endif

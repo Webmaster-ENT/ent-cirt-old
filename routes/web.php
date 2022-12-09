@@ -18,17 +18,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('article');
 });
 
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::prefix('/admin')->group(function (){
+    Route::prefix('/admin')->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');
         });
         Route::resource('/article', ArticleController::class);
+
+        // Route::get('/article/{article}', [ArticleController::class, 'show']);
         Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
         Route::get('/report', [ReportController::class, 'index'])->name('report.index');
         Route::get('/report/done', [ReportController::class, 'isDone'])->name('report.isDone');
