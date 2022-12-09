@@ -68,6 +68,42 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
+    public function update(Request $request, Article $article)
+    {
+        $request->validate([
+            'title' => 'required',
+            'status' => 'required',
+            'body' => 'required',
+            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
+        ]);
+
+        $newName = '';
+
+        $values = [
+            'title' => $request->title,
+            'slug' => Str::slug(Str::words($request->title, 15)),
+            'user_id' => Auth::id(),
+            'status' => $request->status,
+            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
+            'body' => $request->body,
+        ];
+
+        if ($request->file('thumbnail_url') != null) {
+
+            $destination = app_path("storage/images/{$article->thumbnail_url}");
+            if (File::exists($destination)) {
+                unlink($destination);
+            }
+            $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
+            $request->file('thumbnail_url')->storeAs('images', $newName);
+
+            $values['thumbnail_url'] = $newName;
+        }
+        $article->update($values);
+
+        return redirect()->route('article.index');
+    }
 
     public function destroy(Article $article)
     {
@@ -79,16 +115,16 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
-    public function uploadImage()
-    {
-        $article = new Article();
-        $article->id = 0;
-        $article->exists = true;
+    // public function uploadImage()
+    // {
+    //     $article = new Article();
+    //     $article->id = 0;
+    //     $article->exists = true;
 
-        $images = $article->addMediaFromRequest('upload')->toMediaCollection('images');
+    //     $images = $article->addMediaFromRequest('upload')->toMediaCollection('images');
 
-        return response()->json([
-            'url' => $images->getUrl()
-        ]);
-    }
+    //     return response()->json([
+    //         'url' => $images->getUrl()
+    //     ]);
+    // }
 }
