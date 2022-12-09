@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/artikel', function () {
+    return view('article');
+});
+
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
