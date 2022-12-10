@@ -4,21 +4,6 @@
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">Article Information</h3>
                 <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p>
-                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('article.destroy', $article) }}"
-                    method="POST">
-
-                    @csrf
-                    @method('DELETE')
-                    <a href="{{ route('article.show', $article) }}"
-                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs bg-yellow-300 text-slate-800 ">Details</a>
-
-                    <a href="{{ route('article.edit', $article) }}"
-                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in  bg-slate-800 text-white-800 ">Edit</a>
-
-                    <button type="submit"
-                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-10 bg-x-25 bg-gradient-to-tl from-red-700 to-red-800 hover:border-red-700 hover:bg-red-700 hover:text-white">Delete
-                    </button>
-                </form>
             </div>
             <div class="border-t border-gray-200">
                 <dl>
@@ -55,13 +40,14 @@
                         </dd>
 
                     </div>
+
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Summary</dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $article->summary }}</dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">Body</dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $article->body }}</dd>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{!! $article->body !!}</dd>
                     </div>
                 </dl>
             </div>

@@ -50,7 +50,7 @@ class ArticleController extends Controller
             'slug' => Str::slug(Str::words($request->title, 15)),
             'user_id' => Auth::id(),
             'status' => $request->status,
-            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
+            'summary' => Str::of(Str::words($request->body, 23)),
             'body' => $request->body,
             'thumbnail_url' => $request['thumbnail_url'] = $newName
         ]);
@@ -90,9 +90,8 @@ class ArticleController extends Controller
 
         if ($request->file('thumbnail_url') != null) {
 
-            $destination = app_path("storage/images/{$article->thumbnail_url}");
-            if (File::exists($destination)) {
-                unlink($destination);
+            if ($article->thumbnail_url) {
+                unlink('storage/images/' . $article->thumbnail_url);
             }
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
             $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
@@ -109,7 +108,7 @@ class ArticleController extends Controller
     {
         if ($article->thumbnail_url) {
 
-            Storage::delete($article->thumbnail_url);
+            unlink('storage/images/' . $article->thumbnail_url);
         }
         Article::destroy($article->id);
         // $article->delete();
