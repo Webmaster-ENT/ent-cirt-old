@@ -66,8 +66,7 @@
                                             </td>
                                             <td
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <form onsubmit="return confirm('Is it Done?');"
-                                                    action="{{ route('report.update', $report->id) }}" method="post">
+                                                <form onsubmit="return confirm('Is it Done?');" action="{{ route('report.update' , $report->id)  }}" method="post">
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit"

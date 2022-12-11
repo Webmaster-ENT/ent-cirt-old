@@ -4,8 +4,6 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/admin')->group(function (){
         Route::get('/dashboard', function () {
@@ -32,7 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
         Route::get('/report', [ReportController::class, 'index'])->name('report.index');
         Route::get('/report/done', [ReportController::class, 'isDone'])->name('report.isDone');
-        Route::put('/report/update', [ReportController::class, 'updateDone'])->name('report.update');
+        Route::put('/report/update/{id}', [ReportController::class, 'updateDone'])->name('report.update');
     });
 });
 
