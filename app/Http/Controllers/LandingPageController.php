@@ -16,10 +16,14 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        //
+        $articles = Article::with('user')->get();
+        $user = Auth::user();
+        $id = Auth::id();
+        return view('backend.article.index', compact('articles'));
     }
     public function show(Article $article)
     {
-        return view('article', compact('article'));
+        $articles = Article::with('user')->get();
+        return view('article', compact('article', 'articles'));
     }
 }

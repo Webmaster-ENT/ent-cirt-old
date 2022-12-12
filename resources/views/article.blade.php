@@ -2,132 +2,58 @@
     <div id="intro" class="text-center bg-light">
     </div>
     <div class="container">
+
         <!--Grid row-->
         <div class="row">
+
             <!--Grid column-->
-            <div class="col-md-9 mb-4">
-                <div id="intro" class="p-5 text-center bg-light">
-                    <h1 class="container mb-0 h4">This is a long title of the article</h1>
-                </div>
-                <!--Section: Post data-mdb-->
-                <section class="border-bottom mb-4">
-                    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg"
-                        class="img-fluid shadow-2-strong rounded mb-4" alt="" />
+            <div class="col-md-9 my-4">
 
-                    <div class="row align-items-center mb-2">
-                        <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
-                            <!-- image admin -->
-                            <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/img (23).jpg" class="rounded shadow-1-strong me-2"
-                  height="35" alt="" loading="lazy" /> -->
-                            <span> Published <u>06.12.2022</u> by</span>
-                            <a href="" class="text-dark">Syahrul</a>
+                <!--Section: Post data-mdb-->
+                @if ($article->status == 'publish')
+                    <section class="my-4 me-4">
+                        <h1 class="my-2 h2">{{ $article->title }}</h1>
+                        <small>
+                            by Editor PENS |
+                            {{ $article->updated_at->format('F j, Y') }} | ENT - Cyber Insident Response Team
+                        </small>
+                        <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}" class="img-fluid my-4"
+                            alt="$article->slug" />
+                        <div>
+                            {!! $article->body !!}
                         </div>
-                    </div>
-                </section>
-                <!--Section: Post data-mdb-->
+                    </section>
+                @endif
 
-                <!--Section: Text-->
-                <section>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio sapiente molestias
-                        consectetur. Fuga nulla officia error placeat veniam, officiis rerum laboriosam
-                        ullam molestiae magni velit laborum itaque minima doloribus eligendi! Lorem ipsum,
-                        dolor sit amet consectetur adipisicing elit. Optio sapiente molestias consectetur.
-                        Fuga nulla officia error placeat veniam, officiis rerum laboriosam ullam molestiae
-                        magni velit laborum itaque minima doloribus eligendi!
-                    </p>
-
-                    <p><strong>Optio sapiente molestias consectetur?</strong></p>
-
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum architecto ex ab aut
-                        tempora officia libero praesentium, sint id magnam eius natus unde blanditiis. Autem
-                        adipisci totam sit consequuntur eligendi.
-                    </p>
-
-                    <p class="note note-light">
-                        <strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Optio odit consequatur porro sequi ab distinctio modi. Rerum cum dolores sint,
-                        adipisci ad veritatis laborum eaque illum saepe mollitia ut voluptatum.
-                    </p>
-
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, libero repellat
-                        molestiae aperiam laborum aliquid atque magni nostrum, inventore perspiciatis
-                        possimus quia incidunt maiores molestias eaque nam commodi! Magnam, labore.
-                    </p>
-
-                    <img src="https://mdbootstrap.com/img/new/slides/041.jpg"
-                        class="img-fluid shadow-1-strong rounded mb-4" alt="" />
-
-                    <ul>
-                        <li>Lorem</li>
-                        <li>Ipsum</li>
-                        <li>Dolor</li>
-                        <li>Sit</li>
-                        <li>Amet</li>
-                    </ul>
-
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, temporibus nulla
-                        voluptatibus accusantium sapiente doloremque. Doloribus ratione laboriosam culpa. Ab
-                        officiis quidem, debitis nostrum in accusantium dolore veritatis eius est?
-                    </p>
-                </section>
-                <!--Section: Text-->
-
-                <!--Section: Share buttons-->
-
-
-                <!--Section: Comments-->
-
-
-
-                </section>
-                <!--Section: Comments-->
-
-
-                <!--Section: Reply-->
             </div>
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-md-3 mb-4 mt-5 border-start">
-                <h6 class="mt-4">Recent Post</h6>
+            <div class="col-md-3 my-4 border-start">
+                <h6 class="my-3">Recent Post</h6>
                 <!--Section: Sidebar-->
                 <section class="" style="top: 80px;">
+
                     <!--Section: Recentpost-->
-                    <section class="text-center  pb-4 mb-4">
-                        <div class="bg-image hover-overlay ripple mb-4">
-                            <img src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
-                                class="img-fluid " style="width: 70%;" />
-                            <a href="" target="_blank">
-                                <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
-                            </a>
-                        </div>
-                        <h6>Recent Post Title</h6>
+                    @foreach ($articles as $article)
+                        @if ($article->status == 'publish')
+                            <section class="pb-4 mb-4">
+                                <div class="bg-image hover-overlay ripple mb-4">
+                                    <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}"
+                                        class="img-fluid " style="width: 70%;" />
+                                    <a href="" target="_blank">
+                                        <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);">
+                                        </div>
+                                    </a>
+                                </div>
+                                <h6 class="h5">{{ $article->title }}</h6>
 
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, obcaecati!
-                        </p>
-                        <a role="button" class="btn btn-primary" href="" target="_blank">Baca Selengkapnya</a>
-                    </section>
-
-                    <section class="text-center border-bottom pb-4 mb-4">
-                        <div class="bg-image hover-overlay ripple mb-4">
-                            <img src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
-                                class="img-fluid"style="width: 70%;" />
-                            <a href="" target="_blank">
-                                <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
-                            </a>
-                        </div>
-                        <h6>Recent Post Title</h6>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, obcaecati!
-                        </p>
-                        <a role="button" class="btn btn-primary" href="" target="_blank">Baca Selengkapnya</a>
-                    </section>
+                                <div>{!! $article->summary !!}</div>
+                                <a class="btn btn-primary" href="{{ route('artikel.show', $article) }}">Baca
+                                    Selengkapnya</a>
+                            </section>
+                        @endif
+                    @endforeach
                     <!--Section: RecentPost-->
                 </section>
                 <!--Section: Sidebar-->

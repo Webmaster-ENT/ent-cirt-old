@@ -24,7 +24,8 @@ Route::get('/', function () {
 //     return view('article');
 // });
 
-Route::get('/artikel/{article:slug}', [LandingPageController::class, 'show']);
+Route::get('artikel/{article:slug}', [LandingPageController::class, 'show'])->name('artikel.show');
+// Route::get('/article', [LandingPageController::class, 'index']);
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
