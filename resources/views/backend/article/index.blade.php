@@ -46,27 +46,37 @@
                                                 </div>
                                             </td>
                                             <td
-                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <p class="mb-0 font-semibold leading-tight text-xs">
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <p
+                                                    class="text-center inline-block font-semibold leading-none text-xs capitalize">
                                                     {{ $article->title }}</p>
                                             </td>
                                             <td
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <p class="mb-0 font-semibold capitalize leading-tight text-xs">
-                                                    {{ $article->status }}</p>
+                                                @if ($article->status == 'draft')
+                                                    <span
+                                                        class="bg-gradient-to-tl from-slate-600 to-slate-300 px-3 text-xs rounded py-2.3 inline-block whitespace-nowrap text-center align-baseline font-bold capitalize leading-none text-white">Draft</span>
+                                                @else
+                                                    <span
+                                                        class="bg-gradient-to-tl from-green-600 to-lime-400 px-3 text-xs rounded-1.8 py-2.3 inline-block whitespace-nowrap text-center align-baseline font-bold capitalize leading-none text-white">
+                                                        Publish</span>
+                                                @endif
                                             </td>
                                             <td
-                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                     action="{{ route('article.destroy', $article) }}" method="POST">
 
                                                     @csrf
                                                     @method('DELETE')
+                                                    <a href="{{ route('article.show', $article) }}"
+                                                        class="inline-block px-4 py-2 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs bg-yellow-300 text-slate-800 ">Details</a>
+
                                                     <a href="{{ route('article.edit', $article) }}"
-                                                       class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit</a>
+                                                        class="inline-block px-4 py-2 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in  bg-slate-800 text-white-800 ">Edit</a>
 
                                                     <button type="submit"
-                                                        class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-10 bg-x-25 bg-gradient-to-tl from-red-700 to-red-800 hover:border-red-700 hover:bg-red-700 hover:text-white">Delete
+                                                        class="inline-block px-4 py-2 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-10 bg-x-25 bg-gradient-to-tl from-red-700 to-red-800 hover:border-red-700 hover:bg-red-700 hover:text-white">Delete
                                                     </button>
                                                 </form>
                                             </td>
