@@ -1,6 +1,5 @@
 <x-frontend>
-    <div id="intro" class="p-5 text-center bg-light">
-        <h1 class="mb-0 h4">This is a long title of the article</h1>
+    <div id="intro" class="text-center bg-light">
     </div>
     <div class="container">
         <!--Grid row-->
@@ -11,7 +10,6 @@
         <h1 class="container mb-0 h4">This is a long title of the article</h1>
     </div>
                 <!--Section: Post data-mdb-->
-
                 <section class="border-bottom mb-4">
                     <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg"
                         class="img-fluid shadow-2-strong rounded mb-4" alt="" />
