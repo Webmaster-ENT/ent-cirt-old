@@ -41,8 +41,8 @@ class ArticleController extends Controller
 
         if ($request->file('thumbnail_url')) {
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
-            $request->file('thumbnail_url')->storeAs('public/images', $newName);
+            $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
+            $request->file('thumbnail_url')->storeAs('images', $newName);
         }
 
         Article::create([
@@ -88,14 +88,14 @@ class ArticleController extends Controller
             'body' => $request->body,
         ];
 
-        if ($request->file('thumbnail_url') != null) {
+        if ($request->file('thumbnail_url')) {
 
             if ($article->thumbnail_url) {
-                unlink('storage/images' . $article->thumbnail_url);
+                unlink('storage/images/' . $article->thumbnail_url);
+                $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+                $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
+                $request->file('thumbnail_url')->storeAs('images', $newName);
             }
-            $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
-            $request->file('thumbnail_url')->storeAs('public/images', $newName);
 
             $values['thumbnail_url'] = $newName;
         }
