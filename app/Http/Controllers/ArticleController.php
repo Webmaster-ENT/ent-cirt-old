@@ -74,7 +74,7 @@ class ArticleController extends Controller
             'title' => 'required',
             'status' => 'required',
             'body' => 'required',
-            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
+            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:3078',
         ]);
 
         $newName = '';
