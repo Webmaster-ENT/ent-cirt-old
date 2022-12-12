@@ -19,24 +19,20 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        @if (Request::is('admin/article') || Request::is('admin/report') || Request::is('admin/dashboard') || Request::is('admin/report/done'))
+        @if (Request::is('admin/article') ||
+            Request::is('admin/report') ||
+            Request::is('admin/dashboard') ||
+            Request::is('admin/report/done'))
             @include('partials.sidebar')
         @endif
 
-        <!-- Page Heading -->
-        {{--  @if (isset($header))
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-            @endif  --}}
-
         <!-- Page Content -->
 
-        @if (Request::is('admin/article') || Request::is('admin/report') || Request::is('admin/dashboard') || Request::is('admin/report/done'))
-            <main
-                class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+        @if (Request::is('admin/article') ||
+            Request::is('admin/report') ||
+            Request::is('admin/dashboard') ||
+            Request::is('admin/report/done'))
+            <main class="ease-soft-in-out xl:ml-68.5 relative rounded-xl transition-all duration-200">
                 {{--  @include('layouts.navigation')  --}}
                 @include('partials.navbar')
                 {{ $slot }}

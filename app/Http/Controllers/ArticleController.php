@@ -41,7 +41,7 @@ class ArticleController extends Controller
 
         if ($request->file('thumbnail_url')) {
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
+            $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
             $request->file('thumbnail_url')->storeAs('images', $newName);
         }
 
@@ -74,7 +74,7 @@ class ArticleController extends Controller
             'title' => 'required',
             'status' => 'required',
             'body' => 'required',
-            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:3078',
+            'thumbnail_url' => 'mimes:jpg,png,jpeg|image',
         ]);
 
         $newName = '';
@@ -88,14 +88,18 @@ class ArticleController extends Controller
             'body' => $request->body,
         ];
 
-        if ($request->file('thumbnail_url') != null) {
+        if ($request->file('thumbnail_url')) {
 
             if ($article->thumbnail_url) {
                 unlink('storage/images/' . $article->thumbnail_url);
+                $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+                $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
+                $request->file('thumbnail_url')->storeAs('images', $newName);
+            } else {
+                $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+                $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
+                $request->file('thumbnail_url')->storeAs('images', $newName);
             }
-            $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
-            $request->file('thumbnail_url')->storeAs('images', $newName);
 
             $values['thumbnail_url'] = $newName;
         }

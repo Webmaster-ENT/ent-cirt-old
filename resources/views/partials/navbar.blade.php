@@ -24,7 +24,7 @@
                     @elseif(Request::is('admin/article/*/edit'))
                         edit article
                     @elseif(Request::is('admin/article/*'))
-                        details
+                        preview
                     @elseif(Request::is('admin/report'))
                         report
                     @elseif(Request::is('admin/report/done'))
@@ -42,7 +42,7 @@
                 @elseif(Request::is('admin/article/*/edit'))
                     edit article
                 @elseif(Request::is('admin/article/*'))
-                    details
+                    preview
                 @elseif(Request::is('admin/report'))
                     report
                 @elseif(Request::is('admin/report/done'))
