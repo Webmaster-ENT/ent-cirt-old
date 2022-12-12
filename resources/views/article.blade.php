@@ -6,9 +6,9 @@
         <div class="row">
             <!--Grid column-->
             <div class="col-md-9 mb-4">
-            <div id="intro" class="p-5 text-center bg-light">
-        <h1 class="container mb-0 h4">This is a long title of the article</h1>
-    </div>
+                <div id="intro" class="p-5 text-center bg-light">
+                    <h1 class="container mb-0 h4">This is a long title of the article</h1>
+                </div>
                 <!--Section: Post data-mdb-->
                 <section class="border-bottom mb-4">
                     <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg"
@@ -100,7 +100,7 @@
                     <section class="text-center  pb-4 mb-4">
                         <div class="bg-image hover-overlay ripple mb-4">
                             <img src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
-                                class="img-fluid " style="width: 70%;"/>
+                                class="img-fluid " style="width: 70%;" />
                             <a href="" target="_blank">
                                 <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
                             </a>
@@ -110,8 +110,7 @@
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, obcaecati!
                         </p>
-                        <a role="button" class="btn btn-primary" href=""
-                            target="_blank">Baca Selengkapnya</a>
+                        <a role="button" class="btn btn-primary" href="" target="_blank">Baca Selengkapnya</a>
                     </section>
 
                     <section class="text-center border-bottom pb-4 mb-4">
@@ -127,8 +126,7 @@
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, obcaecati!
                         </p>
-                        <a role="button" class="btn btn-primary" href=""
-                            target="_blank">Baca Selengkapnya</a>
+                        <a role="button" class="btn btn-primary" href="" target="_blank">Baca Selengkapnya</a>
                     </section>
                     <!--Section: RecentPost-->
                 </section>

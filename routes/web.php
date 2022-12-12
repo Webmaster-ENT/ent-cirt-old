@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\LandingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/artikel', function () {
-    return view('article');
-});
+// Route::get('/artikel', function () {
+//     return view('article');
+// });
 
+Route::get('/artikel/{article:slug}', [LandingPageController::class, 'show']);
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -32,7 +34,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
         Route::resource('/article', ArticleController::class);
 
-        // Route::get('/article/{article}', [ArticleController::class, 'show']);
         Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
         Route::get('/report', [ReportController::class, 'index'])->name('report.index');
         Route::get('/report/done', [ReportController::class, 'isDone'])->name('report.isDone');

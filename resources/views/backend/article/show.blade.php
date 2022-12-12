@@ -28,5 +28,5 @@
 
         </section>
         <!-- Section: Design Block -->
-
+    </div>
 </x-app-layout>
