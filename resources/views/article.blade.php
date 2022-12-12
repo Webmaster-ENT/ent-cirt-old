@@ -1,4 +1,4 @@
-<x-frontend-layout>
+<x-frontend>
     <div id="intro" class="p-5 text-center bg-light">
         <h1 class="mb-0 h4">This is a long title of the article</h1>
     </div>
@@ -119,4 +119,4 @@
         </div>
         <!--Grid row-->
     </div>
-</x-frontend-layout>
+</x-frontend>
