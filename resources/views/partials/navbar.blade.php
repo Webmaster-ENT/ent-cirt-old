@@ -1,11 +1,7 @@
 <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start"
     navbar-main navbar-scroll="true">
     <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-        @if (Request::is('admin/article') ||
-            Request::is('admin/report') ||
-            Request::is('admin/dashboard') ||
-            Request::is('admin/report/done'))
-        @else
+        @if (Request::is('admin/article/create') || Request::is('admin/article/*/edit') || Request::is('admin/article/*'))
             <a href="{{ route('article.index') }}">
                 <button type="button" class="btn capitalize font-medium text-2xl mr-6 text-gray-300"><i
                         class="fa fa-chevron-left"></i></button>
@@ -19,34 +15,38 @@
                 </li>
                 <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']"
                     aria-current="page">
-                    @if (Request::is('admin/article'))
+                    @if (Request::is('admin/dashboard'))
+                        dashboard
+                    @elseif (Request::is('admin/article'))
                         article
                     @elseif(Request::is('admin/article/create'))
                         create article
-                    @elseif(Request::is('admin/dashboard'))
-                        dashboard
+                    @elseif(Request::is('admin/article/*/edit'))
+                        edit article
+                    @elseif(Request::is('admin/article/*'))
+                        details
                     @elseif(Request::is('admin/report'))
                         report
                     @elseif(Request::is('admin/report/done'))
                         report done
-                    @else
-                        edit article
                     @endif
                 </li>
             </ol>
             <h6 class="mb-0 font-bold capitalize">
-                @if (Request::is('admin/article'))
+                @if (Request::is('admin/dashboard'))
+                    dashboard
+                @elseif (Request::is('admin/article'))
                     article
                 @elseif(Request::is('admin/article/create'))
                     create article
-                @elseif(Request::is('admin/dashboard'))
-                    dashboard
+                @elseif(Request::is('admin/article/*/edit'))
+                    edit article
+                @elseif(Request::is('admin/article/*'))
+                    details
                 @elseif(Request::is('admin/report'))
                     report
                 @elseif(Request::is('admin/report/done'))
                     report done
-                @else
-                    edit article
                 @endif
             </h6>
         </nav>
@@ -80,5 +80,4 @@
         </div>
     </div>
 </nav>
-
 <!-- end Navbar -->
