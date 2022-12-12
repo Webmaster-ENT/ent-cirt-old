@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('article');
 });
 
+Route::get('/artikel', function () {
+    return view('article');
+});
+
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/dashboard', function () {

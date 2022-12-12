@@ -6,14 +6,17 @@
         <!--Grid row-->
         <div class="row">
             <!--Grid column-->
-            <div class="col-md-8 mb-4">
+            <div class="col-md-9 mb-4">
+            <div id="intro" class="p-5 text-center bg-light">
+        <h1 class="container mb-0 h4">This is a long title of the article</h1>
+    </div>
                 <!--Section: Post data-mdb-->
 
                 <section class="border-bottom mb-4">
                     <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(144).jpg"
                         class="img-fluid shadow-2-strong rounded mb-4" alt="" />
 
-                    <div class="row align-items-center mb-4">
+                    <div class="row align-items-center mb-2">
                         <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
                             <!-- image admin -->
                             <!-- <img src="https://mdbootstrap.com/img/Photos/Avatars/img (23).jpg" class="rounded shadow-1-strong me-2"
@@ -91,24 +94,42 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-4 mt-5 border-start">
+                <h6 class="mt-4">Recent Post</h6>
                 <!--Section: Sidebar-->
                 <section class="" style="top: 80px;">
                     <!--Section: Recentpost-->
-                    <section class="text-center border-bottom pb-4 mb-4">
+                    <section class="text-center  pb-4 mb-4">
                         <div class="bg-image hover-overlay ripple mb-4">
                             <img src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
-                                class="img-fluid" />
-                            <a href="https://mdbootstrap.com/docs/standard/" target="_blank">
+                                class="img-fluid " style="width: 70%;"/>
+                            <a href="" target="_blank">
                                 <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
                             </a>
                         </div>
-                        <h5>Recent Post Title</h5>
+                        <h6>Recent Post Title</h6>
 
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, obcaecati!
                         </p>
-                        <a role="button" class="btn btn-primary" href="https://mdbootstrap.com/docs/standard/"
+                        <a role="button" class="btn btn-primary" href=""
+                            target="_blank">Baca Selengkapnya</a>
+                    </section>
+
+                    <section class="text-center border-bottom pb-4 mb-4">
+                        <div class="bg-image hover-overlay ripple mb-4">
+                            <img src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.webp"
+                                class="img-fluid"style="width: 70%;" />
+                            <a href="" target="_blank">
+                                <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);"></div>
+                            </a>
+                        </div>
+                        <h6>Recent Post Title</h6>
+
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, obcaecati!
+                        </p>
+                        <a role="button" class="btn btn-primary" href=""
                             target="_blank">Baca Selengkapnya</a>
                     </section>
                     <!--Section: RecentPost-->
