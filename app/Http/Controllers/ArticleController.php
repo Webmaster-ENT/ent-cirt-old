@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 // use Dotenv\Util\Str;
 use App\Models\Article;
 use Illuminate\Support\Str;
-use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -28,21 +28,13 @@ class ArticleController extends Controller
         return view('backend.article.create');
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $request->validate([
-            'title' => 'required|max:255',
-            'status' => 'required',
-            'body' => 'required',
-            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
-        ]);
-
         $newName = '';
-
         if ($request->file('thumbnail_url')) {
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
             $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
-            $request->file('thumbnail_url')->storeAs('images', $newName);
+            $request->file('thumbnail_url')->storeAs('public/images', $newName);
         }
 
         Article::create([
@@ -68,17 +60,8 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
-    public function update(Request $request, Article $article)
+    public function update(ArticleRequest $request, Article $article)
     {
-        $request->validate([
-            'title' => 'required',
-            'status' => 'required',
-            'body' => 'required',
-            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
-        ]);
-
-        $newName = '';
-
         $values = [
             'title' => $request->title,
             'slug' => Str::slug(Str::words($request->title, 15)),
@@ -88,13 +71,15 @@ class ArticleController extends Controller
             'body' => $request->body,
         ];
 
+        $newName = '';
+
         if ($request->file('thumbnail_url')) {
 
             if ($article->thumbnail_url) {
                 unlink('storage/images/' . $article->thumbnail_url);
                 $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
                 $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
-                $request->file('thumbnail_url')->storeAs('images', $newName);
+                $request->file('thumbnail_url')->storeAs('public/images', $newName);
             }
 
             $values['thumbnail_url'] = $newName;
