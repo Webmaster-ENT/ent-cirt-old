@@ -8,4 +8,3 @@
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <!-- Main Styling -->
 <link href="{{ asset('tailwind/assets/css/soft-ui-dashboard-tailwind.css') }}" rel="stylesheet" />
-<link href="{{ asset('style.css') }}" rel="stylesheet" />
