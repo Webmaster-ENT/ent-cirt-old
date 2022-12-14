@@ -83,7 +83,7 @@
         <a class="text-white" href="">© 2022 Politeknik Elektronika Negeri Surabaya</a>
     </div>
     <!-- Copyright -->
-    </footer>
+
     <!--Footer-->
     <!-- MDB -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>

@@ -36,23 +36,21 @@
 
                     <!--Section: Recentpost-->
                     @foreach ($articles as $article)
-                        @if ($article->status == 'publish')
-                            <section class="pb-4 mb-4">
-                                <div class="bg-image hover-overlay ripple mb-4">
-                                    <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}"
-                                        class="img-fluid " style="width: 70%;" />
-                                    <a href="" target="_blank">
-                                        <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);">
-                                        </div>
-                                    </a>
-                                </div>
-                                <h6 class="h5">{{ $article->title }}</h6>
+                        <section class="pb-4 mb-4">
+                            <div class="bg-image hover-overlay ripple mb-4">
+                                <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}" class="img-fluid "
+                                    style="width: 70%;" />
+                                <a href="" target="_blank">
+                                    <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);">
+                                    </div>
+                                </a>
+                            </div>
+                            <h6 class="h6">{{ $article->title }}</h6>
 
-                                <div>{!! $article->summary !!}</div>
-                                <a class="btn btn-primary" href="{{ route('artikel.show', $article) }}">Baca
-                                    Selengkapnya</a>
-                            </section>
-                        @endif
+                            <div>{!! $article->summary !!}</div>
+                            <a class="btn btn-primary" href="{{ route('artikel.show', $article) }}">Baca
+                                Selengkapnya</a>
+                        </section>
                     @endforeach
                     <!--Section: RecentPost-->
                 </section>

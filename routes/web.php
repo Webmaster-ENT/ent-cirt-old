@@ -16,16 +16,16 @@ use App\Http\Controllers\LandingPageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/artikel', function () {
 //     return view('article');
 // });
 
+Route::get('/', [LandingPageController::class, 'index'])->name('/.index');
 Route::get('artikel/{article:slug}', [LandingPageController::class, 'show'])->name('artikel.show');
-// Route::get('/article', [LandingPageController::class, 'index']);
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
         Route::resource('/article', ArticleController::class);
 
-        Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
+        // Route::post('upload', [ArticleController::class, 'uploadImage'])->name('ckeditor.upload');
         Route::get('/report', [ReportController::class, 'index'])->name('report.index');
         Route::get('/report/done', [ReportController::class, 'isDone'])->name('report.isDone');
         Route::put('/report/update/{id}', [ReportController::class, 'updateDone'])->name('report.update');
