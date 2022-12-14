@@ -14,7 +14,7 @@
                     <section class="my-4 me-4">
                         <h1 class="my-2 h2">{{ $article->title }}</h1>
                         <small>
-                            by Editor PENS |
+                            by Admin CIRT |
                             {{ $article->updated_at->format('F j, Y') }} | ENT - Cyber Insident Response Team
                         </small>
                         <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}" class="img-fluid my-4"
@@ -40,7 +40,7 @@
                             <div class="bg-image hover-overlay ripple mb-4">
                                 <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}" class="img-fluid "
                                     style="width: 70%;" />
-                                <a href="" target="_blank">
+                                <a href="{{ route('artikel.show', $article) }}">
                                     <div class="mask" style="background-color: rgba(57, 192, 237, 0.2);">
                                     </div>
                                 </a>

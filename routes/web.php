@@ -24,7 +24,7 @@ use App\Http\Controllers\LandingPageController;
 //     return view('article');
 // });
 
-Route::get('/', [LandingPageController::class, 'index'])->name('/.index');
+Route::get('/', [LandingPageController::class, 'index'])->name('index');
 Route::get('artikel/{article:slug}', [LandingPageController::class, 'show'])->name('artikel.show');
 
 

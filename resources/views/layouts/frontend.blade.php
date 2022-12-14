@@ -36,7 +36,7 @@
         <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #1751a5;">
             <div class="container">
                 <!-- Navbar brand -->
-                <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
+                <a class="navbar-brand" target="_blank" href=" {{ route('index') }}">
                     <img src=https://www.pens.ac.id/wp-content/uploads/2018/04/Logo-PENS-putih-e1522932523588.png
                         height="35" alt="" loading="lazy" style="margin-top: -3px; " />
                 </a>
@@ -48,14 +48,13 @@
                 <div class="collapse navbar-collapse" id="navbarExample01">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link text-white" aria-current="page" href="#intro">Beranda</a>
+                            <a class="nav-link text-white" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="" rel="nofollow" target="_blank">Tentang
-                                Kami</a>
+                            <a class="nav-link text-white" href="/#news" rel="nofollow">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="" target="_blank">Penganduan</a>
+                            <a class="nav-link text-white" href="/#about">About</a>
                         </li>
                     </ul>
 
@@ -80,7 +79,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color:  #1751a5;">
-        <a class="text-white" href="">© 2022 Politeknik Elektronika Negeri Surabaya</a>
+        <a class="text-white" href=" {{ route('index') }}">© 2022 Politeknik Elektronika Negeri Surabaya</a>
     </div>
     <!-- Copyright -->
 
