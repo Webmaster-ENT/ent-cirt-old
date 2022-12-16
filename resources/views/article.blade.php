@@ -46,7 +46,7 @@
                                 </a>
                             </div>
                             <h6 class="h6">{{ $article->title }}</h6>
-
+P
                             <div>{!! $article->summary !!}</div>
                             <a class="btn btn-primary" href="{{ route('artikel.show', $article) }}">Baca
                                 Selengkapnya</a>

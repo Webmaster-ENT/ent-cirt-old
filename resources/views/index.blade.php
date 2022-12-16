@@ -227,33 +227,34 @@
                     </div>
                     <div class="modal-body">
 
-                        <form>
+                        <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
-                                <label for="" class="col-form-label">Subject :</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="subject" class="col-form-label">Subject :</label>
+                                <input type="text" class="form-control" id="subject" name="subject">
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-form-label">Body :</label>
-                                <textarea class="form-control" id=""></textarea>
+                                <label for="body" class="col-form-label">Body :</label>
+                                <textarea class="form-control" id="body" name="body"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-form-label">Contact :</label>
-                                <input type="text" class="form-control" id="">
+                                <label for="contact" class="col-form-label">Contact :</label>
+                                <input type="text" class="form-control" id="contact" name="contact">
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-form-label">Image:</label>
-                                <input type="file" class="form-control" id="">
+                                <label for="image_url" class="col-form-label">Image:</label>
+                                <input type="file" class="form-control" id="image_url" name="image_url"
+                                    onchange="previewImage()">
+                                <img class="img-preview img-fluid w-25 mt-4">
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label"></label>
                                 <input type="hidden" class="form-control" id="1">
+                                <a href="/" type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">Close</a>
+                                <button type="submit" class="btn btn-primary">Send message</button>
                             </div>
                         </form>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
                     </div>
                 </div>
             </div>
@@ -271,7 +272,22 @@
         class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-journal-text"></i>
 
     </a>
+    <script>
+        function previewImage() {
 
+            const image = document.querySelector('#image_url');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
