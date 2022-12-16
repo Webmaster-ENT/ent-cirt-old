@@ -43,7 +43,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <h1 class="logo"><a href="{{ route('/.index') }}"><img src="assets/img/Logo_PENS_putih.png"
+            <h1 class="logo"><a href="{{ route('index') }}"><img src="assets/img/Logo_PENS_putih.png"
                         alt=""></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -51,7 +51,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#news">NEWS</a></li>
+                    <li><a class="nav-link scrollto" href="#news">News</a></li>
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
                     <!-- <li><a class="nav-link scrollto" href="#faq">FAQ</a></li> -->
 
@@ -142,7 +142,7 @@
                     </div>
                 </div>  --}}
 
-                <div class="row news-container" data-aos="fade-up" data-aos-delay="300">
+                <div class="row news-container " data-aos="fade-up" data-aos-delay="300">
                     @foreach ($articles as $article)
                         <div class="col-lg-4 col-md-6 news-item filter-card">
                             <div class="news-wrap">
