@@ -30,7 +30,7 @@
 
             <!--Grid column-->
             <div class="col-md-3 my-4 border-start">
-                <h6 class="my-3">Recent Post</h6>
+                <h6 class="my-3">Artikel Terakhir</h6>
                 <!--Section: Sidebar-->
                 <section class="" style="top: 80px;">
 

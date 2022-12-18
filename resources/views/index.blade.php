@@ -50,9 +50,9 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#news">News</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
+                    <li><a class="nav-link scrollto" href="#news">Artikel</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
                     <!-- <li><a class="nav-link scrollto" href="#faq">FAQ</a></li> -->
                     <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
                 </ul>
@@ -68,40 +68,40 @@
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-9 text-center">
                     <h1>Cyber Incident Response Team</h1>
-                    <h2>Electronic Engineering Polytechnic Institute of Surabaya</h2>
+                    <h2>Politeknik Elektronika Negeri Surabaya</h2>
                 </div>
             </div>
             <div class="text-center">
-                <a href="#news" class="btn-get-started scrollto">Get Started</a>
+                <a href="#news" class="btn-get-started scrollto">Mulai</a>
             </div>
 
             <div class="row icon-boxes">
-                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
+                <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
                     data-aos-delay="200">
                     <div class="icon-box">
                         <div class="icon"><i class="bi bi-journal-text"></i></div>
                         <h4 class="title">
-                            <a data-toggle="modal" data-target="#exampleModal">FORM REPORT</a>
+                            <a data-toggle="modal" data-target="#exampleModal">Pengaduan</a>
                         </h4>
-                        <p class="description">Pengisian Form Laporan</p>
+                        <p class="description">Pengaduan Keamanan Siber</p>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
-                    data-aos-delay="300">
-                    <div class="icon-box">
-                        <div class="icon"><i class="ri-stack-line"></i></div>
-                        <h4 class="title"><a href="#news">News</a></h4>
-                        <p class="description">Berita Laporan </p>
-                    </div>
-                </div>
+{{--                <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"--}}
+{{--                    data-aos-delay="300">--}}
+{{--                    <div class="icon-box">--}}
+{{--                        <div class="icon"><i class="ri-stack-line"></i></div>--}}
+{{--                        <h4 class="title"><a href="#news">News</a></h4>--}}
+{{--                        <p class="description">Berita Laporan </p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
+                <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
                     data-aos-delay="400">
                     <div class="icon-box">
                         <div class="icon"><i class="ri-article-line"></i></div>
                         <h4 class="title"><a href="#news">Artikel</a></h4>
-                        <p class="description">Artikel Mengenai CIRT</p>
+                        <p class="description">Artikel Mengenai Keamanan Siber</p>
                     </div>
                 </div>
 
@@ -123,7 +123,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>NEWS</h2>
+                    <h2>Artikel</h2>
                     <!-- <p>Mag  nam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
                 </div>
 
@@ -169,7 +169,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h3>Who We Are?</h3>
+                    <h3>Siapakah kita?</h3>
                     <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. </p>  -->
                 </div>
 
@@ -226,19 +226,19 @@
                             @csrf
                             @method('post')
                             <div class="form-group">
-                                <label for="subject" class="col-form-label">Subject :</label>
+                                <label for="subject" class="col-form-label">Topik :</label>
                                 <input type="text" class="form-control" name="subject" id="subject">
                             </div>
                             <div class="form-group">
-                                <label for="body" class="col-form-label">Body :</label>
+                                <label for="body" class="col-form-label">Deskripsi :</label>
                                 <textarea class="form-control" id="body" name="body"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="contact" class="col-form-label">Contact :</label>
+                                <label for="contact" class="col-form-label">Kontak (Opsional) :</label>
                                 <input type="text" class="form-control" id="contact" name="contact">
                             </div>
                             <div class="form-group">
-                                <label for="image_url" class="col-form-label">Image:</label>
+                                <label for="image_url" class="col-form-label">Gambar Pendukung (Opsional) :</label>
                                 <input type="file" class="form-control" id="image_url" name="image_url">
                             </div>
                             <div class="form-group">
@@ -246,8 +246,8 @@
                                 <input type="hidden" class="form-control" id="1">
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Send message</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="submit" class="btn btn-primary">Kirim Pesan</button>
                             </div>
                         </form>
                     </div>

@@ -36,7 +36,7 @@
         <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #1751a5;">
             <div class="container">
                 <!-- Navbar brand -->
-                <a class="navbar-brand" target="_blank" href=" {{ route('index') }}">
+                <a class="navbar-brand" href=" {{ route('index') }}">
                     <img src=https://www.pens.ac.id/wp-content/uploads/2018/04/Logo-PENS-putih-e1522932523588.png
                         height="35" alt="" loading="lazy" style="margin-top: -3px; " />
                 </a>
@@ -48,13 +48,13 @@
                 <div class="collapse navbar-collapse" id="navbarExample01">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link text-white" aria-current="page" href="/">Home</a>
+                            <a class="nav-link text-white" aria-current="page" href="/">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/#news" rel="nofollow">News</a>
+                            <a class="nav-link text-white" href="/#news" rel="nofollow">Artikel</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/#about">About</a>
+                            <a class="nav-link text-white" href="/#about">Tentang Kami</a>
                         </li>
                     </ul>
 
