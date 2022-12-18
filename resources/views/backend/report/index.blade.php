@@ -25,6 +25,9 @@
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Contact</th>
                                         <th
+                                            class="px-6 py-3 pl-2 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                            Report Image</th>
+                                        <th
                                             class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                             Status</th>
                                         <th
@@ -54,6 +57,22 @@
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <p class="mb-0 font-semibold leading-tight text-xs">
                                                     {{ $report->contact }}</p>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <div class="flex px-4 py-1 mx-auto">
+                                                    <div>
+                                                        @if ($report->image_url != '')
+                                                            <img src="{{ asset('storage/reports/' . $report->image_url) }}"
+                                                                 class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out w-40 rounded-lg"
+                                                                 alt="{{ $report->image_url }}" />
+                                                        @else
+                                                            <img src="{{ asset('images/default_image.png') }}"
+                                                                 class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out w-40 rounded-lg"
+                                                                 alt="{{ $report->image_url}}" />
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td
                                                 class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">

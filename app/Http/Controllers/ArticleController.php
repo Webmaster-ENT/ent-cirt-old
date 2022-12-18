@@ -34,7 +34,7 @@ class ArticleController extends Controller
         if ($request->file('thumbnail_url')) {
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
             $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
-            $request->file('thumbnail_url')->storeAs('public/images', $newName);
+            $request->file('thumbnail_url')->storeAs('images', $newName);
         }
 
         Article::create([
