@@ -26,9 +26,7 @@ use App\Http\Controllers\LandingPageController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('index');
 Route::get('artikel/{article:slug}', [LandingPageController::class, 'show'])->name('artikel.show');
-Route::post('report', [ReportController::class, 'store'])->name('report.store');
-
-
+Route::post('report', [LandingPageController::class, 'storeReport'])->name('report.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/admin')->group(function () {
