@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 // use Dotenv\Util\Str;
 use App\Models\Article;
 use Illuminate\Support\Str;
-use function Ramsey\Uuid\v1;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -28,20 +28,12 @@ class ArticleController extends Controller
         return view('backend.article.create');
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'status' => 'required',
-            'body' => 'required',
-            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
-        ]);
-
         $newName = '';
-
         if ($request->file('thumbnail_url')) {
             $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
+            $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
             $request->file('thumbnail_url')->storeAs('images', $newName);
         }
 
@@ -50,16 +42,16 @@ class ArticleController extends Controller
             'slug' => Str::slug(Str::words($request->title, 15)),
             'user_id' => Auth::id(),
             'status' => $request->status,
-            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
+            'summary' => Str::of(Str::words($request->body, 23)),
             'body' => $request->body,
             'thumbnail_url' => $request['thumbnail_url'] = $newName
         ]);
         return redirect()->route('article.index');
     }
 
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('backend.article.show', compact('article'));
     }
 
     public function edit(Article $article)
@@ -68,35 +60,27 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
-    public function update(Request $request, Article $article)
+    public function update(ArticleRequest $request, Article $article)
     {
-        $request->validate([
-            'title' => 'required',
-            'status' => 'required',
-            'body' => 'required',
-            'thumbnail_url' => 'mimes:jpg,png,jpeg|image|max:1024',
-        ]);
-
-        $newName = '';
-
         $values = [
             'title' => $request->title,
             'slug' => Str::slug(Str::words($request->title, 15)),
             'user_id' => Auth::id(),
             'status' => $request->status,
-            'summary' => Str::of(Str::words($request->body, 23))->ltrim('<p>'),
+            'summary' => Str::of(Str::words($request->body, 23)),
             'body' => $request->body,
         ];
 
-        if ($request->file('thumbnail_url') != null) {
+        $newName = '';
 
-            $destination = app_path("storage/images/{$article->thumbnail_url}");
-            if (File::exists($destination)) {
-                unlink($destination);
+        if ($request->file('thumbnail_url')) {
+
+            if ($article->thumbnail_url) {
+                unlink('storage/images/' . $article->thumbnail_url);
+                $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
+                $newName = Str::words($request->title, 2) . '-' . now()->timestamp . '.' . $extension;
+                $request->file('thumbnail_url')->storeAs('public/images', $newName);
             }
-            $extension = $request->file('thumbnail_url')->getClientOriginalExtension();
-            $newName = $request->title . '-' . now()->timestamp . '.' . $extension;
-            $request->file('thumbnail_url')->storeAs('images', $newName);
 
             $values['thumbnail_url'] = $newName;
         }
@@ -109,9 +93,10 @@ class ArticleController extends Controller
     {
         if ($article->thumbnail_url) {
 
-            Storage::delete($article->thumbnail_url);
+            unlink('storage/images/' . $article->thumbnail_url);
         }
-        $article->delete();
+        Article::destroy($article->id);
+        // $article->delete();
         return redirect()->route('article.index');
     }
 
