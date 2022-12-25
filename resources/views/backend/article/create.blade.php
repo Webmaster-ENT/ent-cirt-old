@@ -50,7 +50,8 @@
 
     <!-- CKEDITOR -->
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="asset('./node_modules/ckeditor4/ckeditor.js')"></script>
+
     <script>
         // Replace the <textarea id="editor"> with a CKEditor 4
         // instance, using default configuration.
