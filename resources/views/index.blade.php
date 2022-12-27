@@ -10,20 +10,20 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/Logo_PENS.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
 
     <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}" />
+
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -40,26 +40,57 @@
 <body>
 
     <!-- ======= Header ====== -->
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center justify-content-between">
+    <header>
+        <!-- Intro settings -->
+        <style>
+            #intro {
+                /* Margin to fix overlapping fixed navbar */
+                margin-top: 58px;
+            }
 
-            <h1 class="logo"><a href="{{ route('index') }}"><img src="assets/img/Logo_PENS_putih.png"
-                        alt=""></a></h1>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            @media (max-width: 991px) {
+                #intro {
+                    /* Margin to fix overlapping fixed navbar */
+                    margin-top: 45px;
+                }
+            }
+        </style>
 
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-                    <li><a class="nav-link scrollto" href="#news">Artikel</a></li>
-                    <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-                    <!-- <li><a class="nav-link scrollto" href="#faq">FAQ</a></li> -->
-                    <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #1751a5;">
+            <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href=" {{ route('index') }}">
+                    <img src=https://www.pens.ac.id/wp-content/uploads/2018/04/Logo-PENS-putih-e1522932523588.png
+                        height="35" alt="" loading="lazy" style="margin-top: -3px; " />
+                </a>
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarExample01">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" aria-current="page" href="/">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/#news" rel="nofollow">Artikel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/#about">Tentang Kami</a>
+                        </li>
+                    </ul>
 
-        </div>
+
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Jumbotron -->
+
+        <!-- Jumbotron -->
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -289,6 +320,8 @@
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+
     <script src="assets/js/main.js"></script>
 
 </body>
