@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    
+
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
@@ -19,7 +19,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
-        <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}" />
 
 
     <!-- Vendor CSS Files -->
@@ -270,7 +270,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="image_url" class="col-form-label">Gambar Pendukung (Opsional) :</label>
-                                <input type="file" class="form-control" id="image_url" name="image_url">
+                                <input type="file" class="form-control" id="image_url" name="image_url"
+                                    onchange="previewImage()">
+                                <img class="img-preview img-fluid w-48 mt-4">
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label"></label>
@@ -323,6 +325,22 @@
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        function previewImage() {
+
+            const image = document.querySelector('#image_url');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 
 </body>
 
