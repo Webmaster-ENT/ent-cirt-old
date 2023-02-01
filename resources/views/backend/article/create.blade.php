@@ -29,9 +29,9 @@
                         </div>
                     </div>
                     <div class="col-span-3">
-                        @push('styles')
-                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
-                        @endpush
+                        {{--  @push('styles')  --}}
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+                        {{--  @endpush  --}}
                         <label class="block">
                             <span class="text-gray-700">Description</span>
                             <textarea id="markdown-editor" class="block w-full mt-1 rounded-md" name="body" rows="3"></textarea>
@@ -57,16 +57,16 @@
 
     <!-- CKEDITOR -->
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
-        <script>
-            const easyMDE = new EasyMDE({
-                showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'heading-bigger',
-                    'heading-smaller', 'heading-1', 'heading-2', 'heading-3', 'clean-block', 'horizontal-rule'
-                ],
-                element: document.getElementById('markdown-editor')
-            });
-        </script>
-    @endpush
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+    <script>
+        const easyMDE = new EasyMDE({
+            showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'heading-bigger',
+                'heading-smaller', 'heading-1', 'heading-2', 'heading-3', 'clean-block', 'horizontal-rule'
+            ],
+            element: document.getElementById('markdown-editor')
+        });
+    </script>
+    {{--  @endpush  --}}
     {{--  <script src="{{ asset('https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js') }}"></script>  --}}
 
     <script>

@@ -253,7 +253,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('report.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('report.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('post')
                             <div class="form-group">
