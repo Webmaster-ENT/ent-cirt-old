@@ -26,7 +26,7 @@ class ReportRequest extends FormRequest
         return [
             'subject' => ['required', 'max:100'],
             'body' => 'required',
-            // 'contact' => 'required',
+            'contact' => 'nullable',
             'image_url' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:1024']
         ];
     }

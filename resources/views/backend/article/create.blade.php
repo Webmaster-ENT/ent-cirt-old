@@ -1,6 +1,7 @@
 <x-app-layout>
 
     <div class="w-full px-10 py-6 mx-auto">
+        <!-- Article Form-->
         <form role="form text-left" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="bg-white px-4 py-5 sm:p-6 rounded-2xl">
