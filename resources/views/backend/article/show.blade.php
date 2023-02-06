@@ -20,7 +20,7 @@
                         <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}" class="w-full" />
 
                     </div>
-                    <div class="my-10">
+                    <div class="my-10 prose lg:prose-xl" style="text-align: justify">
                         {!! $article->body !!}
                     </div>
                 </div>

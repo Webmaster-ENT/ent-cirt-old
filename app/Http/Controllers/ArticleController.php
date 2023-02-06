@@ -6,11 +6,12 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Requests\ArticleRequest;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Storage;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class ArticleController extends Controller
 {
@@ -43,7 +44,8 @@ class ArticleController extends Controller
             'user_id' => Auth::id(),
             'status' => $request->status,
             'summary' => Str::of(Str::words($request->body, 23)),
-            'body' => $request->body,
+            'body' => Markdown::convert($request->body)->getContent(),
+            //'body' => $request->body,
             'thumbnail_url' => $request['thumbnail_url'] = $newName
         ]);
         return redirect()->route('article.index');

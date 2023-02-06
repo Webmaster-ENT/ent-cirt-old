@@ -63,7 +63,7 @@
                                                 <div class="flex px-4 py-1 mx-auto">
                                                     <div>
                                                         @if ($report->image_url != '')
-                                                            <img src="{{ asset('storage/reports/' . $report->image_url) }}"
+                                                            <img src="{{ asset('storage/images/report/' . $report->image_url) }}"
                                                                  class="inline-flex items-center justify-center mr-4 text-white transition-all duration-200 ease-soft-in-out w-40 rounded-lg"
                                                                  alt="{{ $report->image_url }}" />
                                                         @else

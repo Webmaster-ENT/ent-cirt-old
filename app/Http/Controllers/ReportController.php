@@ -49,6 +49,6 @@ class ReportController extends Controller
             'contact' => $request->contact,
             'image_url' => $request['image_url'] = $newName
         ]);
-        return redirect()->route('/.index');
+        return redirect()->route('index');
     }
 }

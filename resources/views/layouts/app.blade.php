@@ -13,7 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @stack('styles')
     @include('partials.header')
 </head>
 
@@ -44,6 +44,7 @@
             </main>
         @endif
     </div>
+    @stack('scripts')
     @include('partials.footer-link')
 </body>
 

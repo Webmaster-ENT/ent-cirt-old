@@ -7,7 +7,7 @@
         <div class="row">
 
             <!--Grid column-->
-            <div class="col-md-9 my-4">
+            <div class="col-md-9 my-4 border-end">
 
                 <!--Section: Post data-mdb-->
                 @if ($article->status == 'publish')
@@ -19,7 +19,7 @@
                         </small>
                         <img src="{{ asset('storage/images/' . $article->thumbnail_url) }}" class="img-fluid my-4"
                             alt="$article->slug" />
-                        <div>
+                        <div style="text-align: justify">
                             {!! $article->body !!}
                         </div>
                     </section>
@@ -46,7 +46,6 @@
                                 </a>
                             </div>
                             <h6 class="h6">{{ $article->title }}</h6>
-P
                             <div>{!! $article->summary !!}</div>
                             <a class="btn btn-primary" href="{{ route('artikel.show', $article) }}">Baca
                                 Selengkapnya</a>

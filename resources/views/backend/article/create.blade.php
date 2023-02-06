@@ -1,6 +1,7 @@
 <x-app-layout>
 
     <div class="w-full px-10 py-6 mx-auto">
+        <!-- Article Form-->
         <form role="form text-left" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="bg-white px-4 py-5 sm:p-6 rounded-2xl">
@@ -29,8 +30,15 @@
                         </div>
                     </div>
                     <div class="col-span-3">
-                        <textarea name="body" id="editor" placeholder="Isi Artikel"
-                            class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"></textarea>
+                        {{--  @push('styles')  --}}
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+                        {{--  @endpush  --}}
+                        <label class="block">
+                            <span class="text-gray-700">Description</span>
+                            <textarea id="markdown-editor" class="block w-full mt-1 rounded-md" name="body" rows="3"></textarea>
+                        </label>
+                        {{--  <textarea name="body" id="editor" placeholder="Isi Artikel"
+                            class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"></textarea>  --}}
                     </div>
                     <div class="row-span-2">
                         <label for="thumbnail_url" class="block text-sm font-medium text-gray-700">Thumbnail</label>
@@ -49,12 +57,23 @@
     </div>
 
     <!-- CKEDITOR -->
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+    <script>
+        const easyMDE = new EasyMDE({
+            showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'heading-bigger',
+                'heading-smaller', 'heading-1', 'heading-2', 'heading-3', 'clean-block', 'horizontal-rule'
+            ],
+            element: document.getElementById('markdown-editor')
+        });
+    </script>
+    {{--  @endpush  --}}
+    {{--  <script src="{{ asset('https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js') }}"></script>  --}}
 
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         // Replace the <textarea id="editor"> with a CKEditor 4
         // instance, using default configuration.
-        CKEDITOR.replace('editor');
+        //   CKEDITOR.replace('editor');
 
         function previewImage() {
 
@@ -71,6 +90,4 @@
             }
         }
     </script>
-    <script></script>
-
 </x-app-layout>
