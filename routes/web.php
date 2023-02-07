@@ -28,6 +28,8 @@ Route::get('/', [LandingPageController::class, 'index'])->name('index');
 Route::get('artikel/{article:slug}', [LandingPageController::class, 'show'])->name('artikel.show');
 Route::post('reportstore', [ReportController::class, 'store'])->name('report.store');
 
+/* storage-link */
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/dashboard', function () {
