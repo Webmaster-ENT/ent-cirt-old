@@ -1,7 +1,7 @@
 <x-app-layout>
 
+
     <div class="w-full px-10 py-6 mx-auto">
-        <!-- Article Form-->
         <form role="form text-left" action="{{ route('article.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="bg-white px-4 py-5 sm:p-6 rounded-2xl">
@@ -30,15 +30,11 @@
                         </div>
                     </div>
                     <div class="col-span-3">
-                        {{--  @push('styles')  --}}
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
-                        {{--  @endpush  --}}
                         <label class="block">
                             <span class="text-gray-700">Description</span>
                             <textarea id="markdown-editor" class="block w-full mt-1 rounded-md" name="body" rows="3"></textarea>
                         </label>
-                        {{--  <textarea name="body" id="editor" placeholder="Isi Artikel"
-                            class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"></textarea>  --}}
                     </div>
                     <div class="row-span-2">
                         <label for="thumbnail_url" class="block text-sm font-medium text-gray-700">Thumbnail</label>
@@ -50,14 +46,14 @@
                         <button type="submit"
                             class="inline-block px-6 py-3 mt-6 mb-2 font-bold  text-end text-white uppercase transition-all bg-transparent border-0 rounded-lg cursor-pointer hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-10 bg-x-25 bg-gradient-to-tl from-slate-700 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Simpan</button>
                     </div>
-
                 </div>
             </div>
         </form>
     </div>
 
+
     <!-- CKEDITOR -->
-    @push('scripts')
+    {{--  @push('scripts')  --}}
     <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
     <script>
         const easyMDE = new EasyMDE({

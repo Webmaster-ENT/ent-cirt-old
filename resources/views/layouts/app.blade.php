@@ -20,27 +20,28 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
         @if (Request::is('admin/article') ||
-            Request::is('admin/report') ||
-            Request::is('admin/dashboard') ||
-            Request::is('admin/report/done'))
+                Request::is('admin/report') ||
+                Request::is('admin/dashboard') ||
+                Request::is('admin/report/done'))
             @include('partials.sidebar')
         @endif
 
         <!-- Page Content -->
+        {{--  @include('partials.navbar')
+        {{ $slot }}  --}}
 
         @if (Request::is('admin/article') ||
-            Request::is('admin/report') ||
-            Request::is('admin/dashboard') ||
-            Request::is('admin/report/done'))
+                Request::is('admin/report') ||
+                Request::is('admin/dashboard') ||
+                Request::is('admin/report/done'))
             <main class="ease-soft-in-out xl:ml-68.5 relative rounded-xl transition-all duration-200">
                 {{--  @include('layouts.navigation')  --}}
                 @include('partials.navbar')
                 {{ $slot }}
             </main>
         @else
-            <main>
-                @include('partials.navbar')
-                {{ $slot }}
+            @include('partials.navbar')
+            {{ $slot }}
             </main>
         @endif
     </div>
