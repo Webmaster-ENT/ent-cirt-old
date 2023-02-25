@@ -53,7 +53,10 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        return view('backend.article.show', compact('article'));
+        // $article = Article::with('user')->whre->paginate();
+        return view('backend.article.show', [
+            'article' => $article,
+        ]);
     }
 
     public function edit(Article $article)
